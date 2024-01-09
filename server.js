@@ -1,10 +1,12 @@
 const express = require("express");
+require("dotenv").config();
 const app = express();
 const mongoose = require("mongoose");
 const Product = require("./models/product");
 
 //connect db
-mongoose.connect("mongodb://localhost:27017/node-api-101");
+mongoose.connect(process.env.PORT_DB + "/node-api-101");
+
 mongoose.connection.on("error", (err) => {
   console.error("MongoDB connection error:", err);
 });
@@ -50,7 +52,7 @@ app.delete("/products/:id", async (req, res) => {
   res.status(204).end();
 });
 
-const server = app.listen(9000, () => {
+const server = app.listen(process.env.PORT || 9000, () => {
   console.log("Application is running on port 9000");
 });
 
