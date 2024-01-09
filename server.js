@@ -5,11 +5,9 @@ const Product = require("./models/product");
 
 //connect db
 mongoose.connect("mongodb://localhost:27017/node-api-101");
-
 mongoose.connection.on("error", (err) => {
   console.error("MongoDB connection error:", err);
 });
-
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");
 });
