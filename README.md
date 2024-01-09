@@ -1,4 +1,4 @@
-# simplilearn-nodejs-mysql
+# devahoy-nodejs-mysql
 
 # ref tutorials
 
