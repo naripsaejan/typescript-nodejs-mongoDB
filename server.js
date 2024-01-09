@@ -1,41 +1,40 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const request = require("request");
 const app = express();
+const mongoose = require("mongoose");
+const Product = require("./models/product");
 
-const apiKey = "**********************";
+//connect db
+mongoose.connect("mongodb://localhost:27017/node-api-101");
 
-app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.set("view engine", "ejs");
-
-app.get("/", function (req, res) {
-  res.render("index", { weather: null, error: null });
+mongoose.connection.on("error", (err) => {
+  console.error("MongoDB connection error:", err);
 });
 
-app.post("/", function (req, res) {
-  let city = req.body.city;
-  let url = `http://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=${apiKey}`;
-  console.log(req.body.city);
-  request(url, function (err, response, body) {
-    if (err) {
-      res.render("index", { weather: null, error: "Error, please try again" });
-    } else {
-      let weather = JSON.parse(body);
-      if (weather.main == undefined) {
-        res.render("index", {
-          weather: null,
-          error: "Error, please try again",
-        });
-      } else {
-        let weatherText = `It's ${weather.main.temp} degrees with ${weather.weather[0].main} in ${weather.name}!`;
-        res.render("index", { weather: weatherText, error: null });
-        console.log("body:", body);
-      }
-    }
-  });
+mongoose.connection.once("open", () => {
+  console.log("Connected to MongoDB");
 });
 
-app.listen(3000, function () {
-  console.log("Weatherly app listening on port 3000!");
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.json({ message: "Ahoy!" });
+});
+
+app.post("/products", async (req, res) => {
+  const payload = req.body;
+  try {
+    const product = await Product.create(payload);
+    res.status(201).json(product);
+  } catch (error) {
+    console.error("Error creating product:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+const server = app.listen(9000, () => {
+  console.log("Application is running on port 9000");
+});
+
+server.on("error", (error) => {
+  console.error("Express server error:", error);
 });

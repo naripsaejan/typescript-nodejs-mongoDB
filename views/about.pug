@@ -1,0 +1,31 @@
+// comment เวลา render จะเป็น <!-- -->
+
+//- comment แบบนี้ จะไม่แสดงผล
+
+//- tag <img />
+img
+
+//- tag <img src="path/to/image.png" alt="Alt" />
+img(src="path/to/image" alt="Alt")
+
+//- <a href="https://devahoy.com">Devahoy</a>
+a(href="https://devahoy.com") Devahoy
+
+//- <input type="checkbox" name="agreement" checked="checked" />
+input(
+  type='checkbox'
+  name='agreement'
+  checked
+)
+
+//- div ไม่จำเป็นต้องพิมพ์ก็ได้ถ้าเราจะกำหนดคลาส หรือ id เช่น
+//- <div class="container"></div>
+.container
+//- มีค่าเท่ากับ
+div.container
+
+//- <link rel="stylesheet" href="/css/style.css">
+link(href='/css/style.css', rel='stylesheet')
+
+//- <script src="/path/to/jquery.js"></script>
+script(src='/path/to/jquery.js')
