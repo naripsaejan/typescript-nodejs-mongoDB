@@ -1,4 +1,4 @@
-# devahoy-nodejs-mysql
+# devahoy-nodejs-mongoDB
 
 # ref tutorials
 
