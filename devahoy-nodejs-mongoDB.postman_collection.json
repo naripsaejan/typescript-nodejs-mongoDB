@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "b3dc655c-9c2e-4931-9b2a-5b6661a9d481",
+		"name": "devahoy-nodejs-mongoDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32128187",
+		"_collection_link": "https://planetary-resonance-399392.postman.co/workspace/NDID-AIS~324675d1-c8b2-4459-bb8d-7733df55bd27/collection/32128187-b3dc655c-9c2e-4931-9b2a-5b6661a9d481?action=share&source=collection_link&creator=32128187"
+	},
+	"item": [
+		{
+			"name": "http://{{ip}}:{{port}}/products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"My Product from Postman\",\r\n  \"category\": \"Tool\",\r\n  \"price\": 0,\r\n  \"tags\": [\"test1\", \"test2\", \"tag1\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/products",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
