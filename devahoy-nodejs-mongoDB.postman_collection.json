@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "57224557-bfb1-44c9-98c9-8d58773827de",
+		"_postman_id": "8e9e8245-926a-40c3-8119-f7d32a34af9d",
 		"name": "devahoy-nodejs-mongoDB",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "11679884"
+		"_exporter_id": "32128187",
+		"_collection_link": "https://planetary-resonance-399392.postman.co/workspace/NDID-AIS~324675d1-c8b2-4459-bb8d-7733df55bd27/collection/32128187-8e9e8245-926a-40c3-8119-f7d32a34af9d?action=share&source=collection_link&creator=32128187"
 	},
 	"item": [
 		{
@@ -45,7 +46,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"My Product from Postman\",\n  \"category\": \"Tool\",\n  \"price\": 0,\n  \"tags\": [\"test1\", \"test2\", \"tag1\"]\n}\n",
+					"raw": "{\n  \"name\": \"My Product from Postman2\",\n  \"category\": \"Tool\",\n  \"price\": 0,\n  \"tags\": [\"test1\", \"test2\", \"tag1\"]\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -53,13 +54,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{port}}/products",
+					"raw": "http://{{ip}}:{{port}}/api/v1/products",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
 					],
 					"port": "{{port}}",
 					"path": [
+						"api",
+						"v1",
 						"products"
 					]
 				}
@@ -90,6 +93,37 @@
 					"path": [
 						"products",
 						"659dc84b54bbb91d70b7f040"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{port}}/products",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/v1/products/659e48b5381c946292337de2",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"659e48b5381c946292337de2"
 					]
 				}
 			},
