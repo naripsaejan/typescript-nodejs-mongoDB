@@ -1,6 +1,10 @@
 # step
 
 -set MongoDB file env "PORT_DB" and "PORT"
+
+-use node 20.10.0 work
+-nvm install 20.10.0
+-nvm use 20.10.0
 -npm i
 -npm run dev //run script nodemon server.js
 
