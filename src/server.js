@@ -1,21 +1,26 @@
 const express = require("express");
 require("dotenv").config();
 const app = express();
+
+app.use(express.json());
+
 const mongoose = require("mongoose");
 
-//connect db
-mongoose.connect(process.env.PORT_DB + "/node-api-101");
-mongoose.connection.on("error", (err) => {
-  console.error("MongoDB connection error:", err);
-});
-mongoose.connection.once("open", () => {
-  console.log("Connected to MongoDB");
-});
+mongoose
+  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/node-api-101", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+  });
 
-const usersRouter = require("./routes/users");
 const productsRouter = require("./routes/products");
 
-app.use("/api/v1/", usersRouter, productsRouter);
+app.use("/api/v1/", productsRouter);
 
 const server = app.listen(process.env.PORT || 9000, () => {
   console.log("Application is running on port 9000");
