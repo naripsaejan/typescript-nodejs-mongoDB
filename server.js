@@ -6,7 +6,6 @@ const Product = require("./models/product");
 
 //connect db
 mongoose.connect(process.env.PORT_DB + "/node-api-101");
-
 mongoose.connection.on("error", (err) => {
   console.error("MongoDB connection error:", err);
 });
